@@ -1,0 +1,26 @@
+version: '3'
+
+services: 
+  web:
+   build:
+     context: .
+     dockerfile: Dockerfile.dev # --> docker buid -f Dockerfile.dev .
+
+   ports: 
+     - "3000:3000"
+   volumes: 
+     - /app/node_modules #bookmark this directory
+     - .:/app  #mapping for the rest of the project files 
+
+  tests:
+   build:
+     context: .
+     dockerfile: Dockerfile.dev # --> docker buid -f Dockerfile.dev .
+
+   volumes: 
+     - /app/node_modules #bookmark this directory
+     - .:/app  #mapping for the rest of the project files
+
+   command: ["npm","run","test"]
+
+     
