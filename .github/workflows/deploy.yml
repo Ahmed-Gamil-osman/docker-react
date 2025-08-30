@@ -24,14 +24,14 @@ jobs:
       - name: Deploy over the Elasticbeans
         uses: einargilsson/beanstalk-deploy@v20  
         with:
-        aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
-        aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
+         aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
+         aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
 
-        application_name: "React-project"
-        environment_name: "React-project-env"
-        region: "us-east-1"
-        version_label: ${{github.sha}}
-        deployment_package: deploy.zip
+         application_name: "React-project"
+         environment_name: "React-project-env"
+         region: "us-east-1"
+         version_label: ${{github.sha}}
+         deployment_package: deploy.zip
 
 
 # React-project-env.eba-5g8mutes.us-east-1.elasticbeanstalk.com 
