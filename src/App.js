@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Gamed ya Gamed   
+          Gamed ya Gamed we are now can use the CICD   
         </p>
         <a
           className="App-link"
