@@ -14,27 +14,29 @@ jobs:
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true ahmedgamil/react-test npm run test
 
-     # Create deployment package (needed for EB)
-       
+
+# Create Deployment package needed for EB
       - name: create deployment package
         run : zip -r deploy.zip . -x '*.git*'
 
-     # creating the configuration of the elastic beans
-
-      - name: Deploy over the Elasticbeans
-        uses: einaregilsson/beanstalk-deploy@v20 
-        with:
+      - name: Deploy over ElasticBeans
+        uses: einaregilsson/beanstalk-deploy@v20
+        with: 
          aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
          aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
 
-         application_name: "React-project"
-         environment_name: "React-project-env"
-         region: "us-east-1"
-         version_label: ${{github.sha}}
-         deployment_package: deploy.zip
+        application_name: "gamil-react"
+        environment_name: "Gamil-react-env"
+        region: "us-east-1"
+        version_label: ${{github.sha}}
+        deployment_package: deploy.zip
 
 
-# React-project-env.eba-5g8mutes.us-east-1.elasticbeanstalk.com 
+
+        
+
+
+
 
 
 
