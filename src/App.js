@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          We now can use the CICD we gamdeen keda keda    
+          we are now a DEVOPS Engineers    
         </p>
         <a
           className="App-link"
