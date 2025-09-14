@@ -1,14 +1,14 @@
-sudo: required
-language: generic 
+# sudo: required
+# language: generic 
 
-services: 
- - docker 
+# services: 
+#  - docker 
 
-before_install: 
-  - docker build -t ahmedgamil/docker-react -f Dockerfile.dev .
+# before_install: 
+#   - docker build -t ahmedgamil/docker-react -f Dockerfile.dev .
 
-scripts: 
-  - docker run -e CI=true ahmedgamil/docker-react npm run test
+# scripts: 
+#   - docker run -e CI=true ahmedgamil/docker-react npm run test
 
 # deploy:
 #   provider: elasticbeanstalk
@@ -26,11 +26,3 @@ scripts:
 
 
   
-#comment
-
-#comment
-
-# AKIAZGOZOZT4BAZWHI6M --> ACCESS KEY 
-# Pb4H96oBNB1EklYpZBcwCq/tqqz/CB+WxqJLuXYA  --> PRIVATE ACCESS KEY
-
-# React-env.eba-yebx9dd2.us-east-1.elasticbeanstalk.com
