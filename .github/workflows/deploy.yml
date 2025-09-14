@@ -18,18 +18,18 @@ jobs:
       - name: create deployment package 
         run : zip -r deploy.zip . -x '*.git*'
 
-    # creating deployment configurations for elastic beans
-      - name: Deploy over the ElasticBeanstalk 
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:  
-         aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+    # # creating deployment configurations for elastic beans
+    #   - name: Deploy over the ElasticBeanstalk 
+    #     uses: einaregilsson/beanstalk-deploy@v20
+    #     with:  
+    #      aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+    #      aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
 
-         application_name: "react-project"
-         environment_name: "React-project-env"
-         region: "us-east-1"
-         version_label: ${{github.sha}}
-         deployment_package: deploy.zip
+    #      application_name: "react-project"
+    #      environment_name: "React-project-env"
+    #      region: "us-east-1"
+    #      version_label: ${{github.sha}}
+    #      deployment_package: deploy.zip
 
 
 
