@@ -1,34 +1,31 @@
-name: Deploy our Microservices APP
+name: Deploy our Microservices
 on:
   push:
-    branches:
-      - master # check your repo, your default branch might be main 5aly balek le neroh fe dahya
+    branches: 
+      - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
+  build: 
+    run-on: ubuntu-latest
+    steps: 
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t ahmedgamil/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true ahmedgamil/react-test npm test
+      - run: docker run -e CI=true ahmedgamil/react-test npm run test     
 
       - run: docker build -t ahmedgamil/multi-client ./client
       - run: docker build -t ahmedgamil/multi-nginx ./nginx
-      - run: docker build -t ahmedgamil/multi-server ./server
       - run: docker build -t ahmedgamil/multi-worker ./worker
+      - run: docker build -t ahmedgamil/multi-server ./server
 
-      - run: docker push ahmedgamil/multi-client
+
+      - run: docker push ahmedgamil/multi-client 
       - run: docker push ahmedgamil/multi-nginx
-      - run: docker push ahmedgamil/multi-server
       - run: docker push ahmedgamil/multi-worker
+      - run: docker push ahmedgamil/multi-server
 
 
-
-
-
-
-
+# add the CI pipeline for Images to dockerhub
 
 
 
