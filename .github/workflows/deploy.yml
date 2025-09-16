@@ -20,7 +20,7 @@ jobs:
       - run: docker push ahmedgamil/multi-client
       - run: docker push ahmedgamil/multi-nginx 
       - run: docker push ahmedgamil/multi-server
-      - run: docker push ahmedgamil/mulit-worker
+      - run: docker push ahmedgamil/multi-worker
 
 
 
