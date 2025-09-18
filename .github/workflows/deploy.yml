@@ -1,8 +1,10 @@
-name: Deploy our Microservices application_name
+
+name: Deploy our Microservices app 
+
 on: 
   push: 
     branches: 
-      - master
+      - master 
 jobs:
   build: 
     runs-on: ubuntu-latest
@@ -12,17 +14,17 @@ jobs:
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true ahmedgamil/react-test npm run test
 
-      - run: docker build -t ahmedgamil/multi-client ./client
-      - run: docker build -t ahmedgamil/multi-nginx ./nginx
-      - run: docker build -t ahmedgamil/multi-server ./server
-      - run: docker build -t ahmedgamil/multi-worker ./worker
+      - run: docker build -t ahmedgamil/multi-client ./client 
+      - run: docker build -t ahmedgamil/multi-server ./server 
+      - run: docker build -t ahmedgamil/multi-worker ./worker 
+      - run: docker build -t ahmedgamil/multi-nginx ./nginx 
 
       - run: docker push ahmedgamil/multi-client
+      - run: docker push ahmedgamil/multi-server 
+      - run: docker push ahmedgamil/multi-worker 
       - run: docker push ahmedgamil/multi-nginx 
-      - run: docker push ahmedgamil/multi-server
-      - run: docker push ahmedgamil/multi-worker
 
-
+      # this is for pushing our images to Dockerhub registery 
 
 # name: deploy react 
 
