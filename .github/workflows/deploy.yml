@@ -13,4 +13,4 @@ jobs:
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true ahmedgamil/react-test npm run test 
 
-#updated the password of docker hub 
+#updated the pass
