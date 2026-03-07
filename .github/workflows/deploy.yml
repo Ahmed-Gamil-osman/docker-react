@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
-      
+
       - run: docker run -e CI=true ahmedgamil/react-test npm run test
 
       # Create deployment package (needed for EB)
@@ -25,8 +25,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: "gamil-react"              
-          environment_name: "Gamil-react-env"          
+          application_name: "react"             
+          environment_name: "React-env"          
           region: "us-east-1"                   
           version_label: ${{ github.sha }}      
           deployment_package: deploy.zip        
