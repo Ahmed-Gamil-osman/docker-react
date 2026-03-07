@@ -13,4 +13,18 @@ jobs:
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true ahmedgamil/react-test npm run test 
 
-#updated the pass
+      # create a deployment packge for Elastic beanstalk
+      - name: create a deployment package for Elastic beanstalk
+        run: zip -r deploy.zip . -x '*.git*'
+      
+      - name: deploy for Elastic beanstalk
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: "simpleweb"
+          environment_name: "Simpleweb-env"
+          region: "us-east-1"
+          version_label: ${{ github.sha }}
+          deployment_package: "deploy.zip"
+          
