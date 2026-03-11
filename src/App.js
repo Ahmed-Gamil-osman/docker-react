@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          we  are making these changes from the local file using docker compose file as well 
+          we are using CICD Pipleline to automate our deployment process Gamed Ya Gamed 
         </p>
         <a
           className="App-link"
