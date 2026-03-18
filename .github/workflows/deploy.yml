@@ -1,19 +1,29 @@
-name: deploy react 
+name: deploy react
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
-  build: 
+  build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t ahmedgamil/react-test -f Dockerfile.dev .
 
       - run: docker run -e CI=true ahmedgamil/react-test npm run test
+
+      - run: docker build -t ahmedgamil/multi-client ./microservices/client 
+      - run: docker build -t ahmedgamil/multi-nginx ./microservices/nginx 
+      - run: docker build -t ahmedgamil/multi-server ./microservices/server 
+      - run: docker build -t ahmedgamil/multi-worker ./microservices/worker
+
+      - run: docker push ahmedgamil/multi-client 
+      - run: docker push ahmedgamil/multi-nginx 
+      - run: docker push ahmedgamil/multi-server 
+      - run: docker push ahmedgamil/multi-worker 
 
 #       # Create deployment package (needed for EB)
 #       - name: Create Deployment Package
